@@ -1,0 +1,30 @@
+<h2>This is the second part of the form</h2> 
+
+
+
+<p>The name is : <%= @monument_before['name'] %></p>
+
+<p>The Description is : <%= @monument_before['description'] %></p>
+
+
+<%= form_for @monument, :url =>url_for(:controller => 'monuments', :action => 'confirmation') do |f| %>
+  <% if @monument.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@monument.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @monument.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  	<%= f.file_field :image, type: :file, multiple: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
