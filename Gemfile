@@ -49,6 +49,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'test-unit'
 	gem 'autotest-rails'
+	gem 'pry-rails'
 end
 
 
