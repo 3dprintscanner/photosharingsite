@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+	monuments = Monument.create([{name: 'First Name', description: 'First description'},{name: 'Second Name', description: 'Second description'},{name: 'Third Name', description: 'Third description'}])
