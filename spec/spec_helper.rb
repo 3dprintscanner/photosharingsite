@@ -11,6 +11,18 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+module ControllerHelpers
+    def sign_in(user = double('user'))
+      if user.nil?
+        allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, {:scope => :user})
+        allow(controller).to receive(:current_user).and_return(nil)
+      else
+        allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+        allow(controller).to receive(:current_user).and_return(user)
+      end
+    end
+  end
+
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -39,4 +51,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.include Devise::TestHelpers, type: :controller
 end

@@ -25,6 +25,9 @@
 				<li class="active"><a href="#">Link</a></li>
 				<li><a href="#">Link</a></li>
 			</ul>
+			<% flash.each do |type, message| %>
+			  	<%= content_tag :div, message, :class => "flash #{type}" %>
+			<% end %>
 			<div class='signin' style ='float:right;padding-top:15px'>
 				<% if user_signed_in? %>
 						 Welcome <%= current_user.email %> not you? <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
@@ -33,6 +36,8 @@
 				<% end %>
 			</div>
 		</div>
+
+
 		
 		<!-- /.navbar-collapse -->
 	</nav>

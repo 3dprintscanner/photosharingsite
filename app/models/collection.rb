@@ -3,5 +3,5 @@ class Collection < ActiveRecord::Base
 	belongs_to :user
 	
 	validates :name, presence: true
-	validates :monuments, presence: true
+	# validates :monuments, presence: true
 end

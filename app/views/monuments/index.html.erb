@@ -7,4 +7,10 @@ This is the index file
 
 <% end %>
 
-*here we can view public streams for the site*
+<% if can?(:read, @monuments) %>
+	This user can read stuff
+<% end %>
+
+<% if user_signed_in? %>
+	The user is signed in!
+<% end %>
