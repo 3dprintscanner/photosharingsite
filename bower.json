@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-steps": "~1.1.0"
+    "jquery-steps": "~1.1.0",
+    "jquery-file-upload": "~9.9.3"
   }
 }

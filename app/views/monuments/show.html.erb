@@ -1,3 +1,29 @@
-This is the page
+
 
 <%= @monument.name %>
+
+
+<%= @monument.description %>
+
+<% if @monument.images %>
+	<div class="coverflow-container jumbotron">
+	<div class="coverflow">
+	<% @monument.images.each do |image| %>
+		<div class="cover">
+		<%= image_tag image.photo %>
+		</div>
+	<% end %>
+	</div>
+	</div>
+<% end %>
+<%= link_to "Create New Monument", new_monument_path %>
+<%= link_to "Back to Index", monuments_path %>
+<%= link_to "Edit Monument", edit_monument_path %>	
+
+
+
+<script>
+    $(function() {
+        $('.coverflow').coverflow();
+    });
+</script>

@@ -20,7 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'jquery-ui-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -34,7 +34,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
 
-
+# add image processing gem
+gem 'rmagick'
 # add authorization gem 
 
 gem 'cancan'

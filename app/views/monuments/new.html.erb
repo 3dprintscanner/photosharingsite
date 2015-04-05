@@ -1,46 +1,41 @@
-<%= form_for @monument, :url =>url_for(:controller => 'monuments', :action => 'second_part') do |f| %>
-  <% if @monument.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@monument.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-      <ul>
-      <% @monument.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% if @monument.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@monument.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <ul>
+    <% @monument.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
 
 
 
-
-
 <div class="formcontainer">
-  <%= form_for @monument, :class => 'example-basic' do |f| %>
+  <%= form_for @monument, :class => 'example-basic', :html => {:multipart => true} do |f| %>
     <div id="example-basic">
-      <h3>Basic Information</h3>
+      <h3>Basic Info</h3>
       <section>
-        <p>Try the keyboard navigation by clicking arrow left or right!</p>
+        <h2>Monument Data</h2>
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+        <br>
+        <%= f.label :description, "Description" %>
+        <br>
+        <%= f.text_area :description %>
       </section>
       <h3>Images</h3>
       <section>
-        <p>Wonderful transition effects.</p>
+        <%= fields_for :images do |img| %>
+          <%= img.label :images, "Image" %>
+          <%= img.file_field :images, :multiple => true %>
+        <% end %>                
       </section>
       <h3>Confirm</h3>
       <section>
+        <p>The Name is: <span id='checkname'></span></p>
         <p>The next and previous buttons help you to navigate through your content.</p>
         <%= submit_tag "Save changes", :id => "submit", :name => "submit", :class => "form_submit", :disabled => false, :disable_with => "Please wait..." %>
       </section>

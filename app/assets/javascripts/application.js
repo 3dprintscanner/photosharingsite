@@ -13,6 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-ui
 //= require jquery-steps/build/jquery.steps.js
+//= require jquery-file-upload/js/jquery.fileupload.js
+//= require coverflow/jquery.coverflow.js
+//= require coverflow/jquery.interpolate.js
+//= require coverflow/jquery.mousewheel.js
+//= require coverflow/reflection.js
 //= require_tree .
 //= require bootstrap-sprockets

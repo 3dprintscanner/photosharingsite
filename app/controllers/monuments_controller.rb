@@ -1,5 +1,8 @@
 class MonumentsController < ApplicationController
 
+	before_action :set_monument, only: [:show, :edit, :update, :destroy]
+	respond_to :html
+
 	def index
 		@monuments = Monument.all
 	end
@@ -9,7 +12,7 @@ class MonumentsController < ApplicationController
 	end
 
 	def show
-		
+		respond_with(@monument)
 	end
 
 	def second_part
@@ -23,14 +26,23 @@ class MonumentsController < ApplicationController
 
 	def create
 		@monument = Monument.new(monument_params)
-		if @monument.picture
-			@monument.image.each do |image|
-				Image.create(@monument.image)
-			end
-		end
-
+		
 		respond_to do |format|
 		  if @monument.save
+		  	if params[:images]
+		  		puts "It has #{params[:images].size}images"
+		  		binding.pry
+		  		params[:images][:images].each do |img|
+		  			@monument.images.create(photo: img)
+		  			binding.pry
+		  			# @monument.images.save
+		  		end
+		  		# @monument.images.each do |image|
+		  		# 	@monument.photo = image
+		  		# 	puts @monument.to_json
+		  		# 	@monument.photo.save
+		  		# end
+		  	end
 		    format.html { redirect_to @monument, notice: 'monument was successfully created.' }
 		    format.json { render action: 'show', status: :created, location: @monument }
 		  else
@@ -39,12 +51,20 @@ class MonumentsController < ApplicationController
 		  end
 		end
 	end
+	def edit
+
+	end
 
 	def update
 	  respond_to do |format|
 	    if @monument.update(monument_params)
 	      format.html { redirect_to @monument, notice: 'User was successfully updated.' }
 	      format.json { head :no_content }
+	      if @monument.image
+	      	@monument.image.each do |image|
+	      		Image.create(@monument.image)
+	      	end
+	      end
 	    else
 	      format.html { render action: 'edit' }
 	      format.json { render json: @monument.errors, status: :unprocessable_entity }
@@ -65,8 +85,12 @@ class MonumentsController < ApplicationController
 
 	private
 
+	def set_monument
+	  @monument = Monument.find(params[:id])
+	end
+
 	def monument_params
-		params.require(:monument).permit(:name, :description, :image)
+		params.require(:monument).permit(:name, :description, :images)
 	end
 
 
