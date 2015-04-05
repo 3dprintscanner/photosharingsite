@@ -1,5 +1,5 @@
 class Monument < ActiveRecord::Base
-	belongs_to :collection
+	has_and_belongs_to_many :collections
 	has_many :images
 
 	validates :name, presence: true

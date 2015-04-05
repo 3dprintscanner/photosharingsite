@@ -34,6 +34,10 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
 
+
+# add authorization gem 
+
+gem 'cancan'
 # add file upload and management gem 
 
 gem "paperclip", "~> 4.2"
