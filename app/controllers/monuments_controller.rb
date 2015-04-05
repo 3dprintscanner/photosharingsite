@@ -31,10 +31,10 @@ class MonumentsController < ApplicationController
 		  if @monument.save
 		  	if params[:images]
 		  		puts "It has #{params[:images].size}images"
-		  		binding.pry
+		  		# binding.pry
 		  		params[:images][:images].each do |img|
 		  			@monument.images.create(photo: img)
-		  			binding.pry
+		  			# binding.pry
 		  			# @monument.images.save
 		  		end
 		  		# @monument.images.each do |image|
