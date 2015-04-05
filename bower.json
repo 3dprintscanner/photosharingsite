@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "jquery-steps": "~1.1.0",
-    "jquery-file-upload": "~9.9.3"
+    "jquery-file-upload": "~9.9.3",
+    "coverflow": "~1.1.8",
   }
 }
