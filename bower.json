@@ -1,0 +1,20 @@
+{
+  "name": "SavedoMonumentCollections",
+  "version": "0.0.0",
+  "authors": [
+    "3DPrintScanner <1988anthonythomas@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-steps": "~1.1.0"
+  }
+}

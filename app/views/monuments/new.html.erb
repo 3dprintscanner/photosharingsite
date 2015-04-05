@@ -24,3 +24,38 @@
   </div>
 <% end %>
 
+
+
+
+
+<div class="formcontainer">
+  <%= form_for @monument, :class => 'example-basic' do |f| %>
+    <div id="example-basic">
+      <h3>Basic Information</h3>
+      <section>
+        <p>Try the keyboard navigation by clicking arrow left or right!</p>
+      </section>
+      <h3>Images</h3>
+      <section>
+        <p>Wonderful transition effects.</p>
+      </section>
+      <h3>Confirm</h3>
+      <section>
+        <p>The next and previous buttons help you to navigate through your content.</p>
+        <%= submit_tag "Save changes", :id => "submit", :name => "submit", :class => "form_submit", :disabled => false, :disable_with => "Please wait..." %>
+      </section>
+    </div>  
+  <% end %>
+  
+</div>
+
+
+<script>
+    $("#example-basic").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus: true
+      });
+  
+</script>
